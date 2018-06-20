@@ -100,7 +100,7 @@ function patch (http, tracers, { httpTimings } = {}) {
 
       const uri = extractUrl(options)
       const method = options.method || 'GET'
-      const spans = tracers.map((tracer) => cls.startChildSpan(tracer, uri, {
+      const spans = tracers.map((tracer) => cls.startChildSpan(tracer, uri.substring(0, 75), {
         tags: {
           [Tags.SPAN_KIND]: Tags.SPAN_KIND_RPC_CLIENT,
           [Tags.HTTP_URL]: uri,
